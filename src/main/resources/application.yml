@@ -1,0 +1,18 @@
+server:
+  port: 8181
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://127.0.0.1:1434;databaseName=mlMutante
+    username: julianhdz
+    password: julianhdz
+  jpa:
+    database: SQL_SERVER
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
+    show-sql: true
+  application:
+    name: mlMutantes
+
+  
