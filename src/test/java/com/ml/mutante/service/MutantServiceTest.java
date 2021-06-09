@@ -1,10 +1,11 @@
 package com.ml.mutante.service;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
-import org.mockito.Mockito;
 
+import com.ml.mutante.dto.StatsDto;
 import com.ml.mutante.repository.IDNAVerifiedRepository;
 import com.ml.mutante.service.impl.MutantServiceImpl;
 
@@ -20,9 +21,38 @@ public class MutantServiceTest {
 		//given
 		
 		//when
+		StatsDto dto = sut.getStats();
 		
 		//then
+		assertThat(dto).isNotNull();
+			
+	}
+	
+	@Test
+	public void isMutantTest() throws Exception{
 		
+		//given
+		String[] dnamock = {"ATGCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+		
+		//when
+		boolean isMutant = sut.isMutant(dnamock);
+		
+		//then
+		assertThat(isMutant).isTrue();
+			
+	}
+	
+	@Test
+	public void isNotMutantTest() throws Exception{
+		
+		//given
+		String[] dnamock = {"ATGCCA","CAGTGC","TTATGT","AGAAGG","CACCTA","TCACTG"};
+		
+		//when
+		boolean isMutant = sut.isMutant(dnamock);
+		
+		//then
+		assertThat(isMutant).isFalse();
 			
 	}
 	
